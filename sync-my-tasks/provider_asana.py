@@ -31,6 +31,12 @@ class AsanaProvider:
         # Add My Tasks to the projects list
         self.projects.append(my_tasks_project)
 
+        # Get all projects
+        for workspace_project in self.client.projects.get_projects_for_workspace(self.workspace.get('gid')):
+            self.projects.append(
+                self.client.projects.get_project(workspace_project.get('gid'))
+            )
+
         # Let the user know which account and workspace they connected
         print('Connected to Asana as ' +
               self.user['name'] + ' in workspace ' + self.workspace['name'])
@@ -53,7 +59,7 @@ class AsanaProvider:
                     # Skip empty tasks
                     if task.get('name').strip() == '':
                         continue
-                    
+
                     # Get task created date
                     task_created_at = datetime.fromisoformat(
                         task.get('created_at').replace('Z', '+00:00'))
@@ -80,7 +86,7 @@ class AsanaProvider:
                             # Skip empty subtasks
                             if subtask.get('name').strip() == '':
                                 continue
-                            
+
                             # Get subtask created date
                             subtask_created_at = datetime.fromisoformat(
                                 subtask.get('created_at').replace('Z', '+00:00'))
@@ -109,11 +115,13 @@ class AsanaProvider:
                     for story in self.client.stories.get_stories_for_task(task['gid']):
                         if story.get('type') != 'comment':
                             continue
-                        
-                        task_comments.append('<li>' + story.get('text') + '</li>')
+
+                        task_comments.append(
+                            '<li>' + story.get('text') + '</li>')
                     if len(task_comments) > 0:
-                        task['html_notes'] += 'Comments: <ul>' + ''.join(task_comments) + '</ul>'
-                    
+                        task['html_notes'] += 'Comments: <ul>' + \
+                            ''.join(task_comments) + '</ul>'
+
                     # Create the Task
                     tasklist_task = Task(
                         id=task['gid'],

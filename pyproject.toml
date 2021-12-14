@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sync-my-tasks"
-version = "0.1.0"
+version = "0.2.0"
 description = "Copy tasks between apps"
 authors = ["wilrnh"]
 license = "MIT"

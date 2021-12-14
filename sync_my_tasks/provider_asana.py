@@ -2,8 +2,8 @@
     AsanaProvider interfaces with Asana API
 """
 import asana
-from tasklist import TaskList
-from task import Task
+from sync_my_tasks.tasklist import TaskList
+from sync_my_tasks.task import Task
 from datetime import datetime
 
 

@@ -1,6 +1,6 @@
 """Represents a named list of Tasks
 """
-from task import Task
+from sync_my_tasks.task import Task
 
 class TaskList:
 

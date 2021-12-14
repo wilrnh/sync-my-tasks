@@ -4,8 +4,8 @@
 
 from msal import PublicClientApplication
 import requests
-from task import Task
-from tasklist import TaskList
+from sync_my_tasks.task import Task
+from sync_my_tasks.tasklist import TaskList
 
 
 class MsTodoProvider():

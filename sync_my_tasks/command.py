@@ -16,10 +16,10 @@ Options:
 """
 
 from docopt import docopt
-from provider_asana import AsanaProvider
-from provider_mstodo import MsTodoProvider
-
-if __name__ == '__main__':
+from sync_my_tasks.provider_asana import AsanaProvider
+from sync_my_tasks.provider_mstodo import MsTodoProvider
+    
+def main():
     arguments = docopt(__doc__, version='sync-my-tasks 0.1.0')    
     # Set up Asana as an export provider
     if arguments['--from-asana']:
@@ -35,3 +35,6 @@ if __name__ == '__main__':
     task_lists = export_provider.export_tasks()
     # Import tasks from memory
     import_provider.import_tasks(task_lists)
+
+if __name__ == '__main__':
+    main()

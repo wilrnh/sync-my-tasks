@@ -4,6 +4,21 @@ version = "0.1.0"
 description = "Copy tasks between apps"
 authors = ["wilrnh"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/wilrnh/sync-my-tasks"
+repository = "https://github.com/wilrnh/sync-my-tasks"
+documentation = "https://github.com/wilrnh/sync-my-tasks"
+keywords = ["tasks",
+    "asana",
+    "microsoft",
+    "todo",
+    "import",
+    "export"
+]
+
+
+[tool.poetry.scripts]
+sync-my-tasks = "sync_my_tasks.command:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"
